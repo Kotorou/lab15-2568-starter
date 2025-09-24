@@ -47,7 +47,7 @@ router.get("/courses/:courseId", (req:Request,res:Response) => {
         errors :"Course does not exists",
     })
     }
-    res.set("Link", `/students/${courseId}`);
+    res.set("Link", `/courses/${courseId}`);
 
     return res.json({
         success : true,
