@@ -26,7 +26,7 @@ router.get("/courses",(req:Request,res:Response) => {
 });
 
 // Params URL 
-router.get("/courses/:courseId", (req:Request,res:Response) => {
+router.get("/api/v2/courses/:courseId", (req:Request,res:Response) => {
     const courseId = Number(req.params.courseId);
     const result = zCourseId.safeParse(courseId);
     const foundIndex = courses.findIndex(
@@ -56,7 +56,7 @@ router.get("/courses/:courseId", (req:Request,res:Response) => {
     })
 });
 
-router.post("/courses", (req:Request,res:Response) => {
+router.post("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCoursePostBody.safeParse(body);
@@ -92,7 +92,7 @@ router.post("/courses", (req:Request,res:Response) => {
 });
 
 
-router.put("/courses", (req:Request,res:Response) => {
+router.put("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCoursePutBody.safeParse(body);
@@ -130,7 +130,7 @@ router.put("/courses", (req:Request,res:Response) => {
 });
 
 
-router.delete("/courses", (req:Request,res:Response) => {
+router.delete("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCourseDeleteBody.safeParse(body);

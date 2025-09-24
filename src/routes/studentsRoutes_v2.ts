@@ -14,9 +14,7 @@ import { error } from "console";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.send("List of students");
-});
+
 
 
 router.get("/student",(req:Request,res:Response) => {
@@ -44,7 +42,7 @@ router.get("/me",(req:Request,res:Response) => {
 
 
 //2.
-router.get("/students/:studentId/courses", (req:Request,res:Response) => {
+router.get("/api/v2/students/:studentId/courses", (req:Request,res:Response) => {
     const studentId = req.params.studentId;
 
   const student = students.find((s) => s.studentId === studentId);
