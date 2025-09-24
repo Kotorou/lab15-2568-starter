@@ -15,6 +15,10 @@ import {
 const router: Router = Router();
 
 // READ all
+router.get("/", (req, res) => {
+  res.send("List of course");
+});
+
 router.get("/courses",(req:Request,res:Response) => {
     return res.json({
         data : courses

@@ -1,31 +1,27 @@
-import express, {
-  type Request,
-  type Response,
-} from "express";
-
-import morgan from 'morgan';
+import express, { type Request, type Response } from "express";
+import morgan from "morgan";
 import studentRouter from "./routes/studentsRoutes_v2.js";
 import courseRouter from "./routes/courseRoutes.js";
-const app: any = express();
-const port = 3000;
 
-//Middleware
+// Initialize Express app
+const app: express.Application = express();
+
+// Middleware
 app.use(express.json());
 app.use(morgan("combined"));
 
-app.listen(port , () =>
-  console.log("🚀 Server running on http://localhost:3000")
-);
-
-
+// Root route
 app.get("/", (req: Request, res: Response) => {
   res.send("API services for Student Data");
 });
 
+// Use different routes for students and courses
+app.use("/api/v2/courses", courseRouter);
+app.use("/api/v2/students", studentRouter);
 
-
-
-app.use("/api/v2",courseRouter);
-app.use("/api/v2",studentRouter);
+// Listen on the appropriate port
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`🚀 Server running on http://localhost:${process.env.PORT || 3000}`);
+});
 
 export default app;

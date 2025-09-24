@@ -14,6 +14,10 @@ import { error } from "console";
 
 const router = Router();
 
+router.get("/", (req, res) => {
+  res.send("List of students");
+});
+
 
 router.get("/student",(req:Request,res:Response) => {
     return res.json({
