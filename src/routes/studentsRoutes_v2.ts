@@ -22,12 +22,12 @@ student_router.get("/student",(req:Request,res:Response) => {
 
 
 
-//1.
+
 
 
 
 //2.
-student_router.get("/api/v2/students/:studentId/courses", (req:Request,res:Response) => {
+student_router.get("/students/:studentId/courses", (req:Request,res:Response) => {
     const studentId = req.params.studentId;
 
   const student = students.find((s) => s.studentId === studentId);
