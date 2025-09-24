@@ -16,8 +16,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Use different routes for students and courses
-app.use("/api/v2/courses", courseRouter);
-app.use("/api/v2/students", studentRouter);
+app.use("/courses", courseRouter);
+app.use("/students", studentRouter);
 
 // Listen on the appropriate port
 app.listen(process.env.PORT || 3000, () => {
