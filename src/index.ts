@@ -30,8 +30,8 @@ app.get("/me",(req:Request,res:Response) => {
 });
 
 // Use different routes for students and courses
-app.use("/api/v2/courses", course_router);
-app.use("/api/v2/students", student_router);
+app.use("/api/v2", course_router);
+app.use("/api/v2", student_router);
 
 
 // Listen on the appropriate port
