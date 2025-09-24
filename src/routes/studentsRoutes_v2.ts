@@ -23,19 +23,7 @@ student_router.get("/student",(req:Request,res:Response) => {
 
 
 //1.
-student_router.get("/me",(req:Request,res:Response) => {
-    return res.status(200).json({
-        success :true,
-        message : "Student Information",
-        data :{
-            studentId:"670610679",
-            firstName:"Kotaro",
-            lastName:"Kawakami",
-            program:"CPE",
-            section:"001"
-        }
-    })
-});
+
 
 
 //2.
