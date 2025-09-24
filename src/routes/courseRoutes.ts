@@ -43,6 +43,7 @@ router.get("/courses/:courseId", (req:Request,res:Response) => {
         errors :"Course does not exists",
     })
     }
+    res.set("Link", `/students/${courseId}`);
 
     return res.json({
         success : true,
@@ -77,6 +78,9 @@ router.post("/courses", (req:Request,res:Response) => {
     const new_course = body;
     courses.push(new_course);
 
+
+    res.set("Link", `/courses/${new_course.courseId}`);
+
     return res.status(201).json({
       success: true,
       data: new_course,
@@ -99,6 +103,7 @@ router.put("/courses", (req:Request,res:Response) => {
      const foundIndex = courses.findIndex(
       (course) => course.courseId === body.courseId
     );
+    res.set("Link", `/courses/${body.courseId}`);
 
     if(foundIndex === -1 ){
         return res.status(409).json({
@@ -155,5 +160,6 @@ router.delete("/courses", (req:Request,res:Response) => {
       data: courses[foundIndex],
     });
 });
+
 
 export default router;

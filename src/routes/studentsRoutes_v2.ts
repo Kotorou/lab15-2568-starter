@@ -62,7 +62,7 @@ if (!result.success) {
     });
   }
 
-  
+  res.set("Link", `/students/${studentId}`);
 
 const studentCourseIds = student.courses || [];
   const studentCourses = courses
