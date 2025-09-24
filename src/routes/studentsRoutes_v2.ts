@@ -1,8 +1,5 @@
 import { Router,type Request,type Response } from "express";
 import {
-  zStudentDeleteBody,
-  zStudentPostBody,
-  zStudentPutBody,
   zStudentId,
 } from "../schemas/studentValidator.js"
 
@@ -12,12 +9,12 @@ import { success } from "zod";
 import { error } from "console";
 
 
-const router = Router();
+const student_router = Router();
 
 
 
 
-router.get("/student",(req:Request,res:Response) => {
+student_router.get("/student",(req:Request,res:Response) => {
     return res.json({
         data : students
     })
@@ -26,7 +23,7 @@ router.get("/student",(req:Request,res:Response) => {
 
 
 //1.
-router.get("/me",(req:Request,res:Response) => {
+student_router.get("/me",(req:Request,res:Response) => {
     return res.status(200).json({
         success :true,
         message : "Student Information",
@@ -42,7 +39,7 @@ router.get("/me",(req:Request,res:Response) => {
 
 
 //2.
-router.get("/api/v2/students/:studentId/courses", (req:Request,res:Response) => {
+student_router.get("/api/v2/students/:studentId/courses", (req:Request,res:Response) => {
     const studentId = req.params.studentId;
 
   const student = students.find((s) => s.studentId === studentId);
@@ -90,4 +87,4 @@ const studentCourseIds = student.courses || [];
 
 
 
-export default router;
+export default student_router;

@@ -12,21 +12,21 @@ import {
 } from "../schemas/courseValidator.js"
 
 
-const router: Router = Router();
+const course_router: Router = Router();
 
 // READ all
-router.get("/", (req, res) => {
+course_router.get("/", (req, res) => {
   res.send("List of course");
 });
 
-router.get("/courses",(req:Request,res:Response) => {
+course_router.get("/courses",(req:Request,res:Response) => {
     return res.json({
         data : courses
     })
 });
 
 // Params URL 
-router.get("/api/v2/courses/:courseId", (req:Request,res:Response) => {
+course_router.get("/api/v2/courses/:courseId", (req:Request,res:Response) => {
     const courseId = Number(req.params.courseId);
     const result = zCourseId.safeParse(courseId);
     const foundIndex = courses.findIndex(
@@ -56,7 +56,7 @@ router.get("/api/v2/courses/:courseId", (req:Request,res:Response) => {
     })
 });
 
-router.post("/api/v2/courses", (req:Request,res:Response) => {
+course_router.post("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCoursePostBody.safeParse(body);
@@ -92,7 +92,7 @@ router.post("/api/v2/courses", (req:Request,res:Response) => {
 });
 
 
-router.put("/api/v2/courses", (req:Request,res:Response) => {
+course_router.put("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCoursePutBody.safeParse(body);
@@ -130,7 +130,7 @@ router.put("/api/v2/courses", (req:Request,res:Response) => {
 });
 
 
-router.delete("/api/v2/courses", (req:Request,res:Response) => {
+course_router.delete("/api/v2/courses", (req:Request,res:Response) => {
    
         const body = req.body as Course;
         const result = zCourseDeleteBody.safeParse(body);
@@ -166,4 +166,4 @@ router.delete("/api/v2/courses", (req:Request,res:Response) => {
 });
 
 
-export default router;
+export default course_router;
