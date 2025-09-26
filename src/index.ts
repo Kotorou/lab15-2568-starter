@@ -12,29 +12,30 @@ app.use(morgan("dev"));
 
 // Root route
 app.get("/", (req: Request, res: Response) => {
-  res.send("API services for Student Data");
+  return res.json({
+    success: true,
+    message: "lab 15 API service successfully",
+  });
 });
 
-app.get("/me",(req:Request,res:Response) => {
-    return res.status(200).json({
-        success :true,
-        message : "Student Information",
-        data :{
-            studentId:"670610679",
-            firstName:"Kotaro",
-            lastName:"Kawakami",
-            program:"CPE",
-            section:"001"
-        }
-    })
+app.get("/me", (req: Request, res: Response) => {
+  return res.status(200).json({
+    success: true,
+    message: "Student Information",
+    data: {
+      studentId: "670610679",
+      firstName: "Kotaro",
+      lastName: "Kawakami",
+      program: "CPE",
+      section: "001",
+    },
+  });
 });
 
 // Use different routes for students and courses
 app.use("/api/v2", course_router);
 app.use("/api/v2", student_router);
 
-
 // Listen on the appropriate port
-
 
 export default app;
